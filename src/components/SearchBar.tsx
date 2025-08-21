@@ -56,7 +56,7 @@ export function SearchBar({
           onClick={onSearch}
           className={`${
             isDayTheme
-              ? "bg-red-500 hover:bg-red-600 text-white"
+              ? "bg-orange-500 hover:bg-orange-600 text-white"
               : "bg-purple-500 hover:bg-purple-600 text-white"
           } px-4`}
         >

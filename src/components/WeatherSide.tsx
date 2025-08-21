@@ -5,6 +5,9 @@ import type React from "react";
 import { Sun, Moon } from "lucide-react";
 import { SearchBar } from "./SearchBar";
 import { WeatherCard } from "./WeatherCard";
+import Lottie from "lottie-react";
+import Sunny from "@/animations/Sun.json";
+import Moony from "@/animations/Moon.json";
 
 interface WeatherData {
   location: {
@@ -92,9 +95,15 @@ export function WeatherSide({
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
             {isDayTheme ? (
-              <Sun className="w-8 h-8 text-red-600 animate-pulse-glow" />
+              <Lottie
+                animationData={Sunny}
+                className="w-25 h-25 animate-pulse-glow"
+              />
             ) : (
-              <Moon className="w-8 h-8 text-purple-400 animate-pulse-glow" />
+              <Lottie
+                animationData={Moony}
+                className="w-15 h-15  animate-pulse-glow"
+              />
             )}
             <h1
               className={`font-serif font-bold text-3xl ${
