@@ -2,7 +2,6 @@
 
 import type React from "react";
 
-import { Sun, Moon } from "lucide-react";
 import { SearchBar } from "./SearchBar";
 import { WeatherCard } from "./WeatherCard";
 import Lottie from "lottie-react";
@@ -97,12 +96,12 @@ export function WeatherSide({
             {isDayTheme ? (
               <Lottie
                 animationData={Sunny}
-                className="w-25 h-25 animate-pulse-glow"
+                className="w-15 h-15 animate-pulse-glow shrink-0 "
               />
             ) : (
               <Lottie
                 animationData={Moony}
-                className="w-15 h-15  animate-pulse-glow"
+                className="w-15 h-15  animate-pulse-glow shrink-0 "
               />
             )}
             <h1
