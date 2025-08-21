@@ -18,10 +18,9 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "WeatherSplit - Day & Night Weather App",
+  title: "Weathering - Weather App",
   description:
-    "Beautiful split-screen weather app showing day and night weather conditions",
-  generator: "v0.app",
+    "Weather app showing day and night weather conditions",
 };
 
 export default function RootLayout({
