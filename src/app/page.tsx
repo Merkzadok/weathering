@@ -58,18 +58,39 @@ export default function WeatherApp() {
       return;
     }
 
-    try {
-      const cityUrl = `https://api.api-ninjas.com/v1/city?name=${cityName}`;
-      const response = await fetch(cityUrl, {
-        headers: {
-          "X-API-KEY": process.env.NEXT_PUBLIC_API_KEY1 || "",
-        },
-      });
-      const data = await response.json();
-      setSuggestions(data.slice(0, 5)); // Limit to 5 suggestions
-    } catch (error) {
-      console.log(error);
-    }
+try {
+  const cityUrl = `https://api.api-ninjas.com/v1/city?name=${encodeURIComponent(
+    cityName
+  )}`;
+  const response = await fetch(cityUrl, {
+    headers: {
+      "X-Api-Key": process.env.NEXT_PUBLIC_API_KEY1 || "",
+    },
+  });
+
+  if (!response.ok) {
+    console.error(
+      "API request failed:",
+      response.status,
+      await response.text()
+    );
+    setSuggestions([]); // fallback to empty
+    return;
+  }
+
+  const data = await response.json();
+
+  if (Array.isArray(data)) {
+    setSuggestions(data.slice(0, 5)); // Limit to 5 suggestions
+  } else {
+    console.error("Unexpected response format:", data);
+    setSuggestions([]);
+  }
+} catch (error) {
+  console.error("Fetch error:", error);
+  setSuggestions([]);
+}
+
   };
 
   const getInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
